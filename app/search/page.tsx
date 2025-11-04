@@ -1,21 +1,34 @@
-import { searchRecipes } from "@/app/lib/searchRecipes";
+import { searchRecipes } from "@/app/lib/searchRecipesPaginated";
 import Card from "@/app/components/Card";
 import { IoSearch } from "react-icons/io5";
 import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
+import Link from "next/link";
+
+const RECIPES_PER_PAGE = 9;
 
 type SearchPageProps = {
-    searchParams: Promise<{ q?: string }>;
+    searchParams: Promise<{ q?: string; page?: string }>;
 };
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
     const params = await searchParams;
     const query = params.q || "";
-    const cards = query ? await searchRecipes(query) : [];
-    const client = createClient();
-    const searchData = await client.getSingle("search_recipes");
-    const homeData = await client.getSingle("home");
+    const page = Number(params.page) || 1;
 
+    // Fetch API and Prismic data concurrently
+    const [searchResponse, searchData, homeData] = await Promise.all([
+        query ? searchRecipes(query, page) : Promise.resolve({ results: [], totalResults: 0 }),
+        createClient().getSingle("search_recipes"),
+        createClient().getSingle("home"),
+    ]);
+    console.log(searchResponse);
+
+    const { results: cards, totalResults } = searchResponse;
+
+    // Determine if pagination buttons should be shown
+    const hasNextPage = page * RECIPES_PER_PAGE < totalResults;
+    const hasPrevPage = page > 1;
 
     return (
     <div className="flex flex-col items-center px-6 py-10 min-h-screen">
@@ -26,7 +39,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         </div>
         <form action="/search" method="get" className="w-full">
             <label className="relative block">
-            <span className="sr-only">Search recipes</span> {/* for visually disabled homies, outside the scope of this project I assume */}
+            <span className="sr-only">Search recipes</span>
             <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-gray-400">
                 <IoSearch size={20} />
             </span>
@@ -49,11 +62,27 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 {searchData.data.results_heading} &ldquo;{query}&rdquo;
             </h2>
             {cards.length > 0 ? (
+                <>
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {cards.map((c, i) => (
-                        <Card key={i} {...c} layout="vertical" buttonText={homeData.data.card_button_text} />
+                {cards.map((c: any, i: any) => (
+                        <Card key={i} {...c} layout="vertical" buttonText={homeData.data.card_button_text ?? "View Recipe"} />
                 ))}
                 </div>
+
+                {/* Pagination Controls */}
+                <div className="mt-10 flex items-center justify-center gap-4">
+                    {hasPrevPage && (
+                        <Link href={`/search?q=${query}&page=${page - 1}`} className="rounded-full bg-gray-200 px-5 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-300">
+                            {searchData.data.prev_button_text || "also something"}
+                        </Link>
+                    )}
+                    {hasNextPage && (
+                        <Link href={`/search?q=${query}&page=${page + 1}`} className="rounded-full bg-[#FFDB63] px-5 py-2 text-sm font-semibold text-gray-900 hover:bg-yellow-400">
+                            {searchData.data.next_button_text || "something"}
+                        </Link>
+                    )}
+                </div>
+                </>
             ) : (
                 <p className="text-center text-gray-500">{searchData.data.no_recipes_found}</p>
             )}

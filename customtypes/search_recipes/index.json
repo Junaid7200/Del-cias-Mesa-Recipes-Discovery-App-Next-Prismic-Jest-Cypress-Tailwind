@@ -42,6 +42,20 @@
           "label": "no recipes found",
           "placeholder": "No recipes found. Try a different search term."
         }
+      },
+      "next_button_text": {
+        "type": "Text",
+        "config": {
+          "label": "next button text",
+          "placeholder": "Next"
+        }
+      },
+      "prev_button_text": {
+        "type": "Text",
+        "config": {
+          "label": "prev button text",
+          "placeholder": "Previous"
+        }
       }
     }
   }

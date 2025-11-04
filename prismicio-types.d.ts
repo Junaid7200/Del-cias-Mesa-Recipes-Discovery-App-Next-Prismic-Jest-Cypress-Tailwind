@@ -464,6 +464,28 @@ interface SearchRecipesDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   no_recipes_found: prismic.KeyTextField;
+
+  /**
+   * next button text field in *Search Recipes*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Next
+   * - **API ID Path**: search_recipes.next_button_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  next_button_text: prismic.KeyTextField;
+
+  /**
+   * prev button text field in *Search Recipes*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Previous
+   * - **API ID Path**: search_recipes.prev_button_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  prev_button_text: prismic.KeyTextField;
 }
 
 /**
