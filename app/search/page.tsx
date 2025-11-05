@@ -54,7 +54,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         </section>
 
       {/* Search results section */}
-        <section className="mt-12 w-full max-w-7xl">
+        <section className="mt-[400px] md:mt-[200px] w-full max-w-7xl">
         {query ? (
             <>
             <h2 className="mb-6 text-2xl font-bold">
