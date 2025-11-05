@@ -38,7 +38,7 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
       <div className={clsx(
         "relative shrink-0",
         isHorizontal 
-          ? "h-40 sm:h-44 md:h-48 w-44 sm:w-56 md:w-64 rounded-l-2xl" 
+          ? "h-44 w-56 md:h-48  md:w-64 rounded-l-2xl" 
           : "h-40 w-full"
       )}>
         <Image
