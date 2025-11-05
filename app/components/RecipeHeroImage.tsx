@@ -21,7 +21,7 @@ export default function RecipeHeroImage({ src, alt }: HeroImageProps) {
   }, [src]);
 
   return (
-    <div className="relative w-full min-h-[640px] aspect-21/9 md:min-h-[560px] overflow-hidden bg-gray-200">
+    <div className="relative w-full min-h-[640px] md:min-h-[560px] overflow-hidden bg-gray-200">
       <Image
         // Use the state variable, fallback to placeholder
         src={imageSrc || placeholderImage}
