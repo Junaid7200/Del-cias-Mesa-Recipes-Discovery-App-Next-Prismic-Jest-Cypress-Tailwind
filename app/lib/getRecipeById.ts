@@ -16,6 +16,6 @@ export async function getRecipeById(id: number): Promise<RecipeDetail> {
       },
     }
   );
-
+  
   return data;
 }

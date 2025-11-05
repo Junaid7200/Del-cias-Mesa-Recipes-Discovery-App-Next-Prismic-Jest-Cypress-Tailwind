@@ -2,14 +2,10 @@ import "server-only";
 import axios from "axios";
 import type { RecipeCardProps } from "@/app/types/CardType";
 import placeholderImage from "@/public/imgNotFound.jpg";
-
+import stripHtml from "./utils";
 
 const BASE = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
 const HOST = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
-
-function stripHtml(input = "") {
-  return input.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
-}
 
 export async function getRandomRecipeCards(
   { number = 6, tags = [] as string[] } = {}

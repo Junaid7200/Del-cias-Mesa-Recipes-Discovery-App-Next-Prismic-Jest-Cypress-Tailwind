@@ -1,4 +1,4 @@
-import { searchRecipes } from "@/app/lib/searchRecipesPaginated";
+import { searchRecipes } from "@/app/lib/SearchRecipesPaginated";
 import Card from "@/app/components/Card";
 import { IoSearch } from "react-icons/io5";
 import { createClient } from "@/prismicio";

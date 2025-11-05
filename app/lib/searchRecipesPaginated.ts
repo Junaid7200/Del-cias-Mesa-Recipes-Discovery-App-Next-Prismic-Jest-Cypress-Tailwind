@@ -1,11 +1,9 @@
 import axios from "axios";
+import stripHtml from "./utils";
+
+
 
 const RECIPES_PER_PAGE = 9;
-
-
-function stripHtml(input = "") {
-  return input.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
-}
 
 export async function searchRecipes(query: string, page: number = 1) {
   if (!query) {

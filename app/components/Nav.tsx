@@ -37,7 +37,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
 
         {/* Right: search form (Desktop) */}
         <div className="justify-self-end hidden md:block">
-          <form action="/search" method="get">
+          <form action="/recipe" method="get">
             <label className="relative block">
               <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400">
                 <IoSearch size={18} />

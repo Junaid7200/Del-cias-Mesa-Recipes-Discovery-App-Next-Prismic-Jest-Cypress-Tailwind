@@ -1,16 +1,13 @@
-import { getRecipeById } from "@/app/lib/getRecipeById";
+import { getRecipeById } from "@/app/lib/GetRecipeById";
 import Image from "next/image";
 import { createClient } from "@/prismicio";
-import { getSimilarRecipes } from "@/app/lib/similarRecipes";
+import { getSimilarRecipes } from "@/app/lib/SimilarRecipes";
 import Card from "@/app/components/Card";
+import stripHtml from "@/app/lib/utils";
 
 type RecipePageProps = {
   params: Promise<{ id: string }>;
 };
-
-function stripHtml(input = "") {
-  return input.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
-}
 
 export default async function RecipePage({ params }: RecipePageProps) {
   const { id } = await params;

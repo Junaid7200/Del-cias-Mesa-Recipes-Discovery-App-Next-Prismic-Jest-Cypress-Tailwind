@@ -2,17 +2,13 @@ import "server-only";
 import axios from "axios";
 import type { RecipeCardProps } from "@/app/types/CardType";
 import placeholderImage from "@/public/imgNotFound.jpg";
+import type { SimilarRecipe } from "@/app/types/SimilarRecipe";
 
 const BASE = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
 const HOST = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
 const IMAGE_BASE = "https://img.spoonacular.com/recipes";
 
-type SimilarRecipe = {
-  id: number;
-  title: string;
-  imageType: string;
-  readyInMinutes: number;
-};
+
 
 export async function getSimilarRecipes(
   id: string | number

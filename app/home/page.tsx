@@ -1,5 +1,5 @@
 import Hero from "../components/Hero";
-import { getRandomRecipeCards } from "../lib/getRecipes"
+import { getRandomRecipeCards } from "../lib/GetRecipes"
 import { createClient } from "@/prismicio";
 import Card from "../components/Card";
 
