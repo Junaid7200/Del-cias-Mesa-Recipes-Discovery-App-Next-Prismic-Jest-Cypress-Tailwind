@@ -4,6 +4,7 @@ import { createClient } from "@/prismicio";
 import { getSimilarRecipes } from "@/app/lib/SimilarRecipes";
 import Card from "@/app/components/Card";
 import stripHtml from "@/app/lib/utils";
+import RecipeHeroImage  from "@/app/components/RecipeHeroImage";
 
 type RecipePageProps = {
   params: Promise<{ id: string }>;
@@ -24,9 +25,10 @@ export default async function RecipePage({ params }: RecipePageProps) {
   return (
     <div className="min-h-screen">
     {/* Hero image with title */}
-    <div className="relative aspect-21/9 w-full min-h-[640px] md:min-h-[560px] overflow-hidden bg-white">
+    <RecipeHeroImage src={recipe.image} alt={recipe.title} />
+    {/* <div className="relative aspect-21/9 w-full min-h-[640px] md:min-h-[560px] overflow-hidden bg-white">
       <Image
-        src={recipe.image}
+        src={recipe.image || "/imgNotFound.jpg"}
         alt={recipe.title}
         fill
         className="object-cover object-center"
@@ -37,7 +39,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
           {recipe.title}
         </h1>
       </div>
-    </div>
+    </div> */}
 
       {/* Content */}
       <div className="md:pl-32 mx-auto px-6 py-10 space-y-8">
