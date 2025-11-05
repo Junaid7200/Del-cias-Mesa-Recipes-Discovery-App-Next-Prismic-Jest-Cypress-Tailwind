@@ -14,11 +14,16 @@ export default function Footer({ page }: {page: HomeDocument}) {
     ] : [];
 
     return (
-        <footer className="flex h-[200px] bg-[#FFDB63] justify-around items-center mt-4">
+        <footer className="flex flex-col md:flex-row items-center md:justify-around gap-6 md:gap-0 py-10 md:py-0 md:h-[200px] bg-[#FFDB63] mt-4">
+        
+        {/* Logo + Brand Name */}
         <div className="flex items-center gap-4">
             <PrismicNextImage field={page.data.website_logo} width={50} height={50} />
-            <span className="text-2xl font-bold">{page.data.website_name}</span>
+            {/* This span will be hidden on mobile and visible on medium screens+ */}
+            <span className="text-2xl font-bold hidden md:block">{page.data.website_name}</span>
         </div>
+        
+        {/* Social Icons */}
         <div className="flex flex-col items-center gap-2">
             <h3 className='font-bold text-xl'>{page.data.footer_text}</h3>
             <div className="flex gap-4">
