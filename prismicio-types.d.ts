@@ -123,6 +123,16 @@ export interface HomeDocumentDataHeroSectionItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   hero_text: prismic.KeyTextField;
+
+  /**
+   * background hero image mobile field in *Home → hero section*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.hero_section[].background_hero_image_mobile
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_hero_image_mobile: prismic.ImageField<never>;
 }
 
 /**

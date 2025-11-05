@@ -75,6 +75,14 @@
                 "label": "hero text",
                 "placeholder": "Get Inspired, Cook with passion and enjoy unforgettable moments at the table"
               }
+            },
+            "background_hero_image_mobile": {
+              "type": "Image",
+              "config": {
+                "label": "background hero image mobile",
+                "constraint": {},
+                "thumbnails": []
+              }
             }
           }
         }

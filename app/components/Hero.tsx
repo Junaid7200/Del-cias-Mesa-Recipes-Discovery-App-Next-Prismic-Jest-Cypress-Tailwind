@@ -8,12 +8,16 @@ export default function Hero({page}: {page: HomeDocument}) {
     return null;
   }
   return (
-    <section className="relative w-full min-h-[420px] sm:min-h-[480px] md:min-h-[560px] overflow-hidden">
+    <section className="relative w-full min-h-[640px] md:min-h-[560px] overflow-hidden">
+      <PrismicNextImage
+        field={heroData.background_hero_image_mobile}
+        fill
+        className="object-cover object-center"
+      />
       <PrismicNextImage
         field={heroData.background_hero_image}
         fill
-        priority
-        className="object-cover object-center"
+        className="object-cover object-center hidden md:block"
       />
 
       <div className="absolute inset-0 bg-black/40" aria-hidden />
