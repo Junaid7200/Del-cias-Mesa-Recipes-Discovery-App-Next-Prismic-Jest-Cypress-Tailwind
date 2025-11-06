@@ -28,14 +28,14 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
   return (
     <article className={clsx(
       "overflow-hidden rounded-2xl border border-gray-200 shadow-sm",
-      isHorizontal ? "flex w-full items-stretch" : "w-[340px] bg-[#F5F2EE]"
+      isHorizontal ? "flex md:min-w-[1187px] items-stretch md:min-h-[260px]" : "md:w-[410px] md:min-h-[480px] bg-[#F5F2EE]"
     )}>
       {/* Image Section */}
       <div className={clsx(
         "relative shrink-0",
         isHorizontal 
-          ? "h-44 w-56 md:h-48  md:w-64 rounded-l-2xl" 
-          : "h-40 w-full"
+          ? "md:w-80 rounded-l-2xl" 
+          : "h-50 w-full"
       )}>
         <Image
           src={imageSrc || "/imgNotFound.jpg"}
@@ -54,10 +54,10 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
 
       {/* Content Section */}
       <div className={clsx(
-        "flex-1 bg-[#F5F2EE] px-5 py-5",
+        "flex-1 bg-[#F5F2EE] px-12 py-5",
         isHorizontal && "rounded-r-2xl"
       )}>
-        <h3 className="text-xl font-bold text-gray-900">{title}</h3>
+        <h3 className="mb-10 text-xl font-bold text-gray-900">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">{subtitle}</p>
         
         <Link href={`/recipe/${id}`} className="mt-4 inline-block">
