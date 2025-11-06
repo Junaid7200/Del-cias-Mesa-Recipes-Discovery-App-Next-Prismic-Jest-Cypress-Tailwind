@@ -7,7 +7,7 @@ import clsx from "clsx";
 import placeholderImage from '@/public/imgNotFound.jpg';
 
 // Add layout to the props
-interface EnhancedRecipeCardProps extends RecipeCardProps {
+export interface EnhancedRecipeCardProps extends RecipeCardProps {
   layout?: 'vertical' | 'horizontal';
 }
 
