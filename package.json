@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "slicemachine": "start-slicemachine",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@prismicio/client": "^7.21.0",
@@ -30,6 +31,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^15.6.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
     "jest": "^30.2.0",
