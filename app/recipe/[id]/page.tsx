@@ -4,6 +4,7 @@ import { getSimilarRecipes } from "@/app/lib/SimilarRecipes";
 import Card from "@/app/components/Card";
 import stripHtml from "@/app/lib/utils";
 import RecipeHeroImage  from "@/app/components/RecipeHeroImage";
+import { notFound } from "next/navigation";
 
 
 type RecipePageProps = {
@@ -48,6 +49,9 @@ export default async function RecipePage({ params }: RecipePageProps) {
   const homeData = await client.getSingle("home");
   const similarRecipes = await getSimilarRecipes(id);
 
+  if (!recipe) {
+    notFound();
+  }
 
 
 
