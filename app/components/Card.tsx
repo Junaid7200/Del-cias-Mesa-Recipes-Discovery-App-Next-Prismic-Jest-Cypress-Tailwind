@@ -6,18 +6,24 @@ import type { RecipeCardProps } from "@/app/types/CardType";
 import clsx from "clsx";
 import placeholderImage from '@/public/imgNotFound.jpg';
 
+
+// Enhanced RecipeCardProps to include layout options, simple inheritence here
 export interface EnhancedRecipeCardProps extends RecipeCardProps {
   layout?: 'vertical' | 'horizontal';
 }
 
 export default function RecipeCard({ id, image, title, subtitle, buttonText, layout = 'vertical' }: EnhancedRecipeCardProps) {
+  // we will have a mobile state and a image state and then do a useeffect to make the state changes whenver screen width changes or the image prop value changes
   const [isMobile, setIsMobile] = useState(false);
   const [imageSrc, setImageSrc] = useState(image);
 
+  // whenever image prop changes, update imageSrc state
   useEffect(() => {
     setImageSrc(image);
   }, [image]);
 
+
+  // check if its a mobile view
 useEffect(() => {
   const checkMobile = () => setIsMobile(window.innerWidth < 768);
   checkMobile();
@@ -25,6 +31,7 @@ useEffect(() => {
   return () => window.removeEventListener('resize', checkMobile);
 }, []);
 
+// we will never use horizontal layout on mobile
 const isHorizontal = layout === 'horizontal' && !isMobile;
 
 
