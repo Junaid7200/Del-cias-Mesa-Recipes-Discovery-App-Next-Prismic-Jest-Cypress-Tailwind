@@ -8,12 +8,15 @@ export default function Hero({page}: {page: HomeDocument}) {
     return null;
   }
   return (
+    // 640px height on mobile view since i want it to be stretched in mobile view.
     <section className="relative w-full min-h-[640px] md:min-h-[560px] overflow-hidden">
+      {/* two diff hero images depending on the screen size */}
       <PrismicNextImage
         field={heroData.background_hero_image_mobile}
         fill
         className="object-cover object-center"
       />
+      {/* this hero image is for laptop and higher */}
       <PrismicNextImage
         field={heroData.background_hero_image}
         fill

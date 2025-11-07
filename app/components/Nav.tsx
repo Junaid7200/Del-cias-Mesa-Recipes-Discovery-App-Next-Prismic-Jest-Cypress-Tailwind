@@ -1,31 +1,32 @@
 'use client';
 
-import Link from 'next/link';
-import { PrismicNextImage } from '@prismicio/next';
-import { HomeDocument } from '@/prismicio-types';
-import { asLink } from '@prismicio/client';
-import { IoSearch, IoMenu, IoClose } from "react-icons/io5";
-import { useState } from 'react';
+import Link from 'next/link'; // for routing
+import { PrismicNextImage } from '@prismicio/next'; // prismic library to get the special image component from there
+import { HomeDocument } from '@/prismicio-types'; // whatever custom types I make in 9999 server in prismic, a typescript type for it is created in prismicio-types.d.ts
+import { asLink } from '@prismicio/client'; // the links don't work withou an asLink function weirdly
+import { IoSearch, IoMenu, IoClose } from "react-icons/io5";  // simple icons for search icon, hamburger menu, and the cross to close
+import { useState } from 'react'; // ganna need useState for the mobile menu
 
 export default function Nav({ page }: { page: HomeDocument }) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);  // mobile menu is not open initially
 
   return (
-    <nav className="w-full">
+    // using the semantic nav tag
+    <nav className="w-full"> 
       {/* Top Yellow Bar */}
       <div className="bg-[#FFDB63] h-3 w-full" />
 
-      {/* Main Navbar */}
+      {/* Main Navbar: ganna need a simple grid with 3 columns */}
       <div className="bg-white flex md:grid md:grid-cols-3 items-center justify-between px-7 py-4">
         
-        {/* Left: logo + brand */}
+        {/* Left: logo + website name: the website name needs to be hidden for mobile view but block (visible) for md or bigger. other then that, this just needs to be horizontal so flex will do */}
         <div className="flex items-center gap-4">
           <PrismicNextImage field={page.data.website_logo} width={40} height={40} />
           {/* Hide text on mobile, show on medium+ */}
           <span className="text-2xl font-bold hidden md:block">{page.data.website_name}</span>
         </div>
 
-        {/* Center: menu (Desktop) */}
+        {/* Center: menu: the whole thing needs to be hidden in mobile view, in md or higher view its a very simple flex with some gap */}
         <div className="justify-self-center hidden md:flex items-center gap-10">
           {page.data.navbar_link.map((item) => (
             <Link key={item.navbar_link_text} href={asLink(item.navbar_link) || "www.google.com"} className="text-lg font-semibold hover:text-[#FFDB63] transition-colors">
@@ -34,10 +35,12 @@ export default function Nav({ page }: { page: HomeDocument }) {
           ))}
         </div>
 
-        {/* Right: search form (Desktop) */}
+        {/* Right: search form: again, this should be hidden for mobile view and in md or higher it just needs to be at the end of the parent flex div */}
         <div className="justify-self-end hidden md:block">
           <form action="/recipe" method="get">
+          {/* simple relative parent and absolute child trick to get the magnifying glass inside the main div. btw the icon and input are wrapped in label instead of div because of semantic tags, its better to associate label with input even if the input is literally a child of the label */}
             <label className="relative block">
+              {/* pointer-even-none so the click passes through the icon and hits the input field */}
               <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400">
                 <IoSearch size={18} />
               </span>
@@ -52,10 +55,11 @@ export default function Nav({ page }: { page: HomeDocument }) {
           </form>
         </div>
 
-        {/* Hamburger Button (Mobile) */}
+        {/* Hamburger Button: completly hidden in md or higher views and will use the state we made above to true when we click it (open the mobile menu basically) */}
         <div className="md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
+            // aria-labels are just to follow the WCAG
             aria-label="Open navigation menu"
           >
             <IoMenu size={32} />
@@ -63,15 +67,18 @@ export default function Nav({ page }: { page: HomeDocument }) {
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+
+      {/* Mobile Menu Drawer: this only appears when the onClick even on the hamburger works, this menu needs to open then, so ganna use a ternary with the state */}
       <div
+      // fixed to make this drawer float on top of the home page and then full widght and hight and top and left 0 to make it cover the entire browser window. also fixed elements don't move even when you scroll. transform enables transformation and translate-x-0 means to move the element 0% horizontally (it should be fully visible) and translate-x-full means to move the element 100% horizontally so its invisible basically 
         className={`fixed top-0 left-0 w-full h-screen bg-white z-50 transform ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out md:hidden`}
       >
         {/* Top Bar */}
         <div className="bg-[#FFDB63] h-3 w-full" />
 
-        {/* Drawer Header (Logo + Close Button) */}
+        {/* Drawer Header (Logo + Close Button): a simple flex div with  */}
         <div className="flex items-center justify-between px-7 py-4">
+          {/* needless div here */}
           <div className="flex items-center gap-4">
             <PrismicNextImage field={page.data.website_logo} width={40} height={40} />
           </div>
@@ -83,7 +90,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
           </button>
         </div>
 
-        {/* Drawer Links */}
+        {/* Drawer Links: 3 simple links and texts from prismic in a flex-col */}
         <div className="flex flex-col items-center gap-8 mt-16">
           {page.data.navbar_link.map((item) => (
             <Link
@@ -97,7 +104,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
           ))}
         </div>
 
-        {/* Mobile Search Bar */}
+        {/* Mobile Search Bar: almost the same thing as the first search bar, this one is just in the mobile drawer thats the only difference, could make a component to reduce redundancy here */}
         <div className="mt-16 px-7">
           <form action="/recipe" method="get">
             <label className="relative block">
