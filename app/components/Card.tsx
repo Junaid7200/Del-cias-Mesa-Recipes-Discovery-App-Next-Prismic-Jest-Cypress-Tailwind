@@ -6,7 +6,6 @@ import type { RecipeCardProps } from "@/app/types/CardType";
 import clsx from "clsx";
 import placeholderImage from '@/public/imgNotFound.jpg';
 
-// Add layout to the props
 export interface EnhancedRecipeCardProps extends RecipeCardProps {
   layout?: 'vertical' | 'horizontal';
 }
@@ -32,7 +31,7 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
   return (
     <article className={clsx(
       "overflow-hidden rounded-2xl border border-gray-200 shadow-sm",
-      isHorizontal ? "flex md:min-w-[1187px] items-stretch md:min-h-[260px]" : "md:w-[410px] md:min-h-[480px] bg-[#F5F2EE]"
+      isHorizontal ? "flex md:min-w-full items-stretch md:min-h-[260px]" : "md:w-full bg-[#F5F2EE]"
     )}>
       {/* Image Section */}
       <div className={clsx(

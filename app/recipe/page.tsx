@@ -73,7 +73,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         </section>
 
       {/* Search results section */}
-        <section className="mt-[400px] md:mt-[200px] w-full max-w-7xl">
+        <section className="mt-[400px] md:mt-[200px] w-full">
         {query ? (
             <>
             <h2 className="mb-6 text-2xl font-bold">
@@ -81,7 +81,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             </h2>
             {cards.length > 0 ? (
                 <>
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 min-w-full">
                 {cards.map((c: any, i: any) => (
                         <Card key={i} {...c} layout="vertical" buttonText={homeData.data.card_button_text ?? "View Recipe"} />
                 ))}

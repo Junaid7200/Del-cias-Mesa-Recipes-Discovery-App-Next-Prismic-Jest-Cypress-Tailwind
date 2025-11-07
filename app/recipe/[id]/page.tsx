@@ -109,8 +109,8 @@ export default async function RecipePage({ params }: RecipePageProps) {
         )}
         {similarRecipes.length > 0 && (
         <div className="mt-10">
-          <h2 className="w-full text-2xl font-bold mb-4">{recipeData.data.similar_recipes}</h2>
-          <div className="flex flex-col justify-center md:justify-start md:flex-row gap-24">
+          <h2 className="text-2xl font-bold mb-4">{recipeData.data.similar_recipes}</h2>
+          <div className="flex flex-col justify-center md:justify-start md:grid-cols-3 md:flex-row gap-16 md:pr-12">
             {similarRecipes.map((recipe) => (
               <Card key={recipe.id} {...recipe} layout="vertical" buttonText={homeData.data.card_button_text || "View Recipe"} />
             ))}
