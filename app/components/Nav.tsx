@@ -78,10 +78,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
 
         {/* Drawer Header (Logo + Close Button): a simple flex div with  */}
         <div className="flex items-center justify-between px-7 py-4">
-          {/* needless div here */}
-          <div className="flex items-center gap-4">
             <PrismicNextImage field={page.data.website_logo} width={40} height={40} />
-          </div>
           <button
             onClick={() => setIsMobileMenuOpen(false)}
             aria-label="Close navigation menu"

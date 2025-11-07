@@ -23,9 +23,10 @@ export default function Hero({page}: {page: HomeDocument}) {
         className="object-cover object-center hidden md:block"
       />
 
+      {/* that black/40, the 40 is opacity, gotta keep the opacity low to add that dark overlay to the hero image. also, aria-hidden makes it so a screen read can't read this stuff (again, WCAG stuff)  */}
       <div className="absolute inset-0 bg-black/40" aria-hidden />
 
-      {/* Centered content */}
+      {/* Centered content: simple absolute div so text is on top of the image and grid place-items-center to center it */}
       <div className="absolute inset-0 z-10 grid place-items-center px-6">
         <h1 className="max-w-5xl mx-auto text-center text-white text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
           {heroData.hero_text}
