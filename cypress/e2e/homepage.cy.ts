@@ -34,7 +34,7 @@ describe('Homepage User Flow', () => {
     cy.url().should('include', '/recipe?q=chicken');
 
     // 4. Check that a search results heading is now visible.
-    cy.contains('Results for').should('be.visible');
+    cy.contains('Search Results for').should('be.visible');
 
     // 5. Verify that every recipe card shown in the results contains "chicken".
 
