@@ -3,7 +3,7 @@ import stripHtml from "./utils";
 
 
 
-const RECIPES_PER_PAGE = 9;
+const RECIPES_PER_PAGE = 8;
 
 export async function searchRecipes(query: string, page: number = 1) {
   if (!query) {
