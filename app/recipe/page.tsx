@@ -6,7 +6,7 @@ import { PrismicRichText } from "@prismicio/react";
 import Link from "next/link";
 import { Metadata } from "next";
 
-const RECIPES_PER_PAGE = 8;
+const RECIPES_PER_PAGE = 6;
 
 type SearchPageProps = {
   searchParams: { q?: string; page?: string };
@@ -61,14 +61,19 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             <div className="mb-12 flex items-center justify-center gap-3 text-3xl font-bold text-[#2C2B2B]">
             <PrismicRichText field={searchData.data.main_heading}/>
             </div>
-            <form action="/recipe" method="GET" className="flex items-center gap-2">
+            <form action="/recipe" method="GET" className="flex justify-center items-center gap-2">
+              <label className="relative block w-full">
+                <span className="pointer-events-none absolute inset-y-0 left-5 flex items-center text-gray-400">
+                  <IoSearch size={20} aria-hidden="true" />
+                </span>
                 <input
-                    type="search"
-                    name="q"
-                    defaultValue={userQuery}
-                    placeholder={searchData.data.placeholder_text_for_search_bar ?? "Search for recipes..."}
-                    className="w-full rounded-full bg-[#F5F2F2] border-gray-100 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FFDB63]/60 focus:border-transparent"
+                  type="search"
+                  name="q"
+                  defaultValue={userQuery}
+                  placeholder={searchData.data.placeholder_text_for_search_bar ?? "Search Recipe"}
+                  className="w-full rounded-full bg-[#F5F2F2] border border-gray-200/50 px-6 py-3.5 pl-14 text-base placeholder:text-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FFDB63]/60 focus:border-transparent"
                 />
+              </label>
             </form>
         </section>
 
@@ -80,7 +85,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             <h2 className="mb-6 text-2xl font-bold">
             {`${searchData.data.results_heading} "${userQuery}"`}
             </h2>}
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 min-w-full">
+            <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 md:grid-cols-3 min-w-full">
             {cards.map((c: any) => (
                     <Card key={c.id} {...c} layout="vertical" buttonText={homeData.data.card_button_text ?? "View Recipe"} />
             ))}
