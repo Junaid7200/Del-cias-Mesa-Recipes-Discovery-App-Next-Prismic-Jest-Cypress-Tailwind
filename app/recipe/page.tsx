@@ -80,7 +80,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             <h2 className="mb-6 text-2xl font-bold">
             {`${searchData.data.results_heading} "${userQuery}"`}
             </h2>}
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 min-w-full">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 min-w-full">
             {cards.map((c: any) => (
                     <Card key={c.id} {...c} layout="vertical" buttonText={homeData.data.card_button_text ?? "View Recipe"} />
             ))}
