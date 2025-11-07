@@ -62,7 +62,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
     <RecipeHeroImage src={recipe.image} alt={recipe.title} />
 
       {/* Content */}
-      <div className="md:pl-32 mx-auto px-6 py-10 space-y-8">
+      <div className="md:pl-12 mx-auto px-6 py-10 space-y-8">
         {/* Ingredients */}
         <section>
           <h2 className="text-2xl font-bold mb-4">{recipeData.data.ingredients}</h2>

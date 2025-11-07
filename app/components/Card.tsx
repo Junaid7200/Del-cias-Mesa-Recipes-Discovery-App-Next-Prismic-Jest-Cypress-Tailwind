@@ -63,8 +63,8 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
         <h3 className="mb-10 text-xl font-bold text-gray-900">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">{subtitle}</p>
         
-        <Link href={`/recipe/${id}`} className="mt-4 inline-block">
-          <button className="inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
+        <Link href={`/recipe/${id}`} className="mt-4 block">
+          <button className="rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
             {buttonText || "View Recipe"}
           </button>
         </Link>
