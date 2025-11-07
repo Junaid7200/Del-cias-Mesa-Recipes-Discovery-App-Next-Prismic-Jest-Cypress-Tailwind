@@ -80,10 +80,6 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             <h2 className="mb-6 text-2xl font-bold">
             {`${searchData.data.results_heading} "${userQuery}"`}
             </h2>}
-            {/* <h2 className="mb-6 text-2xl font-bold">
-                {userQuery ? `${searchData.data.results_heading} "${userQuery}"` : (searchData.data.results_heading || "Foods")}
-            </h2> */}
-            
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 min-w-full">
             {cards.map((c: any) => (
                     <Card key={c.id} {...c} layout="vertical" buttonText={homeData.data.card_button_text ?? "View Recipe"} />
@@ -93,13 +89,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             {/* Pagination Controls */}
             <div className="mt-10 flex items-center justify-center gap-4">
                 {hasPrevPage && (
-                    <Link href={{ query: { q: userQuery, page: page - 1 } }} className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-300">
-                        Previous
+                    <Link href={{ query: { q: userQuery, page: page - 1 } }} className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-[#FFDB63]">
+                        {searchData.data.prev_button_text || "Previous"}
                     </Link>
                 )}
                 {hasNextPage && (
-                    <Link href={{ query: { q: userQuery, page: page + 1 } }} className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-300">
-                        Next
+                    <Link href={{ query: { q: userQuery, page: page + 1 } }} className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-[#FFDB63]">
+                        {searchData.data.next_button_text || "Next"}
                     </Link>
                 )}
             </div>
@@ -109,7 +105,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             {userQuery ? (
                 <p className="text-center text-gray-500">{searchData.data.no_recipes_found}</p>
             ) : (
-                <p className="text-center text-gray-500">Could not load recipes. Please try again later.</p>
+                <p className="text-center text-gray-500">{searchData.data.no_recipes_found}</p>
             )}
             </>
         )}
