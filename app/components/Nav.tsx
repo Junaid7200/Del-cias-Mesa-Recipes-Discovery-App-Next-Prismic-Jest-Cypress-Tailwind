@@ -18,11 +18,11 @@ export default function Nav({ page }: { page: HomeDocument }) {
       <div className="bg-white flex md:grid md:grid-cols-3 items-center justify-between px-7 py-4">
         
         {/* Left: logo + website name: the website name needs to be hidden for mobile view but block (visible) for md or bigger. other then that, this just needs to be horizontal so flex will do */}
-        <div className="flex items-center gap-4">
+        <PrismicLink href="/" className="flex items-center gap-4 md:justify-self-start" aria-label="Homepage">
           <PrismicNextImage field={page.data.website_logo} width={40} height={40} />
           {/* Hide text on mobile, show on medium+ */}
           <span className="text-2xl font-bold hidden md:block">{page.data.website_name}</span>
-        </div>
+        </PrismicLink>
 
         {/* Center: menu: the whole thing needs to be hidden in mobile view, in md or higher view its a very simple flex with some gap */}
         <div className="justify-self-center hidden md:flex items-center gap-10">
@@ -104,7 +104,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
           <form action="/recipe" method="get">
             <label className="relative block">
               <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400">
-                <IoSearch size={18} />
+                <IoSearch size={18} aria-hidden="true" />
               </span>
               <input
                 type="text"

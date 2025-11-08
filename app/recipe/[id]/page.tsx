@@ -5,40 +5,43 @@ import Card from "@/app/components/Card";
 import stripHtml from "@/app/lib/utils";
 import RecipeHeroImage  from "@/app/components/RecipeHeroImage";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
 
 type RecipePageProps = {
   params: { id: string };
 };
 
+export async function generateMetadata({ params }: RecipePageProps): Promise<Metadata> {
+  const { id } = await params;
+  const recipe = await getRecipeById(Number(id));
 
-// export async function generateMetadata({ params }: RecipePageProps): Promise<Metadata> {
-//   const recipe = await getRecipeById(Number(params.id));
+  if (!recipe) {
+    return {
+      title: "Recipe Not Found",
+    };
+  }
 
-//   if (!recipe) {
-//     return {
-//       title: "Recipe not found",
-//     };
-//   }
+  // Create a clean description from the summary, limited to 160 characters for SEO best practices.
+  const description = stripHtml(recipe.summary).substring(0, 160);
 
-//   const description = stripHtml(recipe.summary).slice(0, 160);
-
-//   return {
-//     title: recipe.title,
-//     description: description,
-//     openGraph: {
-//       title: recipe.title,
-//       description: description,
-//       images: [
-//         {
-//           url: recipe.image,
-//           alt: recipe.title,
-//         },
-//       ],
-//     },
-//   };
-// }
-
+  return {
+    title: `${recipe.title} | Delícias à Mesa`,
+    description: description,
+    openGraph: {
+      title: recipe.title,
+      description: description,
+      images: [
+        {
+          url: recipe.image,
+          width: 1200,
+          height: 630,
+          alt: recipe.title,
+        },
+      ],
+    },
+  };
+}
 
 
 export default async function RecipePage({ params }: RecipePageProps) {
@@ -83,7 +86,8 @@ export default async function RecipePage({ params }: RecipePageProps) {
             <ol className="space-y-3">
               {recipe.analyzedInstructions[0].steps.map((step) => (
                 <li key={step.number} className="flex items-start">
-                  <span className="text-black rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1 shrink-0">
+                  <span className="text-black rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1 shrink-0"
+                  aria-hidden="true">
                     {step.number}
                   </span>
                   <span>{step.step}</span>

@@ -19,7 +19,7 @@ export default async function Home() {
                     {homeData.data.section_one_text}
                 </h1>
             <div className="py-10">
-                <div className="grid gap-16 grid-cols-1 md:grid-cols-3 md:gap-24 md:px- min-h-full">
+                <div className="grid gap-16 grid-cols-1 md:grid-cols-3 md:gap-24 md:px-16 min-h-full">
                     {cards.map((c, i) => (
                 <Card key={i} {...c} buttonText={homeData.data.card_button_text} layout="vertical" />
                 ))}

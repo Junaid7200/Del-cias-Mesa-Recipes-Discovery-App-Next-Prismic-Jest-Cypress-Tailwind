@@ -95,7 +95,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 {`${searchData.data.results_heading} "${userQuery}"`}
               </h2>
             )}
-            <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 md:grid-cols-3 min-w-full">
+            <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 md:grid-cols-3 md:px-16 min-w-full">
               {cards.map((c: any) => (
                 <Card
                   key={c.id}
