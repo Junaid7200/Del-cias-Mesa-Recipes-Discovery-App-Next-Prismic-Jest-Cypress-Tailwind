@@ -12,16 +12,24 @@ const IMAGE_BASE = "https://img.spoonacular.com/recipes";
 export async function getSimilarRecipes(
   id: string | number
 ): Promise<RecipeCardProps[]> {
+
   try {
-    const { data } = await axios.get<SimilarRecipe[]>(
+    const response = await fetch(
       `${BASE}/recipes/${id}/similar?number=4`,
       {
         headers: {
           "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
           "x-rapidapi-host": HOST,
         },
+        next: { revalidate: 3600 }, // Cache results for one hour
       }
     );
+
+    if (!response.ok) {
+      throw new Error(`API call failed with status: ${response.status}`);
+    }
+
+    const data: SimilarRecipe[] = await response.json();
 
     return data.map((recipe) => ({
       id: recipe.id,

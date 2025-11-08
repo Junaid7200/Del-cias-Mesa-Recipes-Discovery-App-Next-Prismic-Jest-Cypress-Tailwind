@@ -12,17 +12,33 @@ export async function getRandomRecipeCards(
     const params = new URLSearchParams({ number: String(number) });
     if (tags.length) params.set("tags", tags.join(","));
   
-    const { data } = await axios.get<{ recipes: { id: number, title: string; image: string; summary?: string }[] }>(
-      `${BASE}/recipes/random?${params.toString()}`,
-      {
-        headers: {
-          "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
-          "x-rapidapi-host": HOST,
-        },
-      }
-    );
+    // const { data } = await axios.get<{ recipes: { id: number, title: string; image: string; summary?: string }[] }>(
+    //   `${BASE}/recipes/random?${params.toString()}`,
+    //   {
+    //     headers: {
+    //       "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
+    //       "x-rapidapi-host": HOST,
+    //     },
+    //   }
+    // );
+
+        // Replace axios.get with fetch
+    const response = await fetch(`${BASE}/recipes/random?${params.toString()}`, {
+      headers: {
+        "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
+        "x-rapidapi-host": HOST,
+      },
+      // This 'next' object ONLY works with fetch
+      next: { revalidate: 3600 }, // Revalidate once per hour
+    });
+
+    if (!response.ok) {
+      throw new Error(`API call failed with status: ${response.status}`);
+    }
+
+    const data = await response.json();
   
-    return data.recipes.map((r) => ({
+    return data.recipes.map((r: any) => ({
       id: r.id,
       image: r.image || placeholderImage,
       title: r.title,
