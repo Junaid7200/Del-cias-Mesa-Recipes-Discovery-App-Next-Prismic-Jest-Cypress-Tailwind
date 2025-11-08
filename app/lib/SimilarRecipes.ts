@@ -1,5 +1,4 @@
 import "server-only";
-import axios from "axios";
 import type { RecipeCardProps } from "@/app/types/CardType";
 import placeholderImage from "@/public/imgNotFound.jpg";
 import type { SimilarRecipe } from "@/app/types/SimilarRecipe";
