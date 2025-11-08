@@ -70,7 +70,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
         {/* Ingredients */}
         <section>
           <h2 className="text-2xl font-bold mb-4">{recipeData.data.ingredients}</h2>
-          <ul className="space-y-2 list-disc list-inside">
+          <ul className="space-y-2">
             {recipe.extendedIngredients.map((ing, i) => (
               <li key={i} className="flex items-start">
                 <span className="mr-2">•</span>
