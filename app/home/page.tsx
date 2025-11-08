@@ -1,7 +1,7 @@
-import Hero from "../components/Hero";
-import { getRandomRecipeCards } from "../lib/GetRecipes"
+import Hero from "@/app/components/Hero";
+import { getRandomRecipeCards } from "@/app/lib/GetRecipes"
 import { createClient } from "@/prismicio";
-import Card from "../components/Card";
+import Card from "@/app/components/Card";
 
 
 export default async function Home() {
