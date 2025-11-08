@@ -18,6 +18,7 @@ export async function getRecipeById(id: number): Promise<RecipeDetail | null> {
     
     return data;
   } catch (error) {
+    console.error(`Error fetching recipe by ID ${id}:`, error);
     return null;
   }
 }
