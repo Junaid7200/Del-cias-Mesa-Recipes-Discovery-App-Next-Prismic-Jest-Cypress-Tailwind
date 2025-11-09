@@ -64,7 +64,7 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
 
       {/* Content Section */}
       <div className={clsx(
-        "flex-1 bg-[#F5F2EE] px-12 py-5",
+        "flex-1 bg-[#F5F2F2] px-12 py-5",
         isHorizontal && "rounded-r-2xl flex flex-col gap-3 justify-center"
       )}>
         <h3 className={clsx("mb-4 text-xl font-bold text-gray-900 line-clamp-1")}>{title}</h3>
