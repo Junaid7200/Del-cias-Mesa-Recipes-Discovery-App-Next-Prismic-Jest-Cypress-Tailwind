@@ -21,19 +21,13 @@ export async function getRandomRecipeCards(
     //   }
     // );
 
-        // Replace axios.get with fetch
     const response = await fetch(`${BASE}/recipes/random?${params.toString()}`, {
       headers: {
         "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
         "x-rapidapi-host": HOST,
       },
-      // This 'next' object ONLY works with fetch
       next: { revalidate: 10800 }, // Revalidate once per 3 hours
     });
-
-    if (!response.ok) {
-      throw new Error(`API call failed with status: ${response.status}`);
-    }
 
     const data = await response.json();
   

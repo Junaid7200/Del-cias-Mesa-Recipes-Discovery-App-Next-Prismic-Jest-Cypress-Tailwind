@@ -38,11 +38,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const userQuery = params.q || "";
   const page = Number(params.page) || 1;
 
-  // If the user hasn't provided a query, we use a generic default to simulate "All Recipes".
-  // The API requires a query, so we can't send an empty one.
   const effectiveQuery = userQuery || "Food";
 
-  // Fetch API and Prismic data concurrently
   const [searchResponse, searchData, homeData] = await Promise.all([
     searchRecipes(effectiveQuery, page),
     createClient().getSingle("search_recipes"),
@@ -51,7 +48,6 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   const { results: cards, totalResults } = searchResponse;
 
-  // Determine if pagination buttons should be shown
   const hasNextPage = page * RECIPES_PER_PAGE < totalResults;
   const hasPrevPage = page > 1;
 
