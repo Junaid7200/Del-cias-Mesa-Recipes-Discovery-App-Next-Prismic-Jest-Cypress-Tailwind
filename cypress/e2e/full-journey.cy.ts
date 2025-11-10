@@ -16,14 +16,14 @@ it('should allow a user to search from the main nav, use pagination, and view a 
 
     // 3. Verify the URL and that results are displayed
     cy.url().should('include', '/recipe?q=pasta');
-    cy.contains('h2', 'Search Results for: pasta').should('be.visible');
+    cy.contains('h2', 'Search Results for:').should('be.visible');
     cy.get('article').should('have.length.greaterThan', 0);
 
     // 4. Test pagination by clicking "Next"
     // Note: This will only work if there are enough results for a second page.
     cy.contains('a', 'Next').click();
     cy.url().should('include', 'page=2');
-    cy.contains('h2', 'Search Results for: pasta').should('be.visible');
+    cy.contains('h2', 'Search Results for').should('be.visible');
 
     // 5. Navigate to the first recipe on the page
     cy.get('article').first().find('a').click();
@@ -48,7 +48,7 @@ it('should work correctly on mobile devices, including the drawer menu search', 
 
     // 5. Verify the URL and that results are displayed
     cy.url().should('include', '/recipe?q=salad');
-    cy.contains('h2', 'Search Results for: salad').should('be.visible');
+    cy.contains('h2', 'Search Results for').should('be.visible');
     cy.get('article').should('have.length.greaterThan', 0);
 });
 

@@ -15,7 +15,7 @@ describe('searchRecipes', () => {
   });
 
   it('should fetch search results and format them correctly', async () => {
-    // Arrange
+    
     const mockApiData = {
       results: [
         { id: 201, title: 'Pizza', image: 'pizza.jpg', summary: 'A pizza summary' },
@@ -24,10 +24,8 @@ describe('searchRecipes', () => {
     };
     mockedAxios.get.mockResolvedValue({ data: mockApiData });
 
-    // Act
     const result = await searchRecipes('pizza', 1);
 
-    // Assert
     expect(result.results).toHaveLength(1);
     expect(result.totalResults).toBe(1);
     expect(result.results[0].title).toBe('Pizza');
@@ -35,24 +33,18 @@ describe('searchRecipes', () => {
   });
 
   it('should return an empty state if the query is empty', async () => {
-    // Act
     const result = await searchRecipes('');
 
-    // Assert
     expect(result.results).toEqual([]);
     expect(result.totalResults).toBe(0);
-    // Ensure axios was NOT called
     expect(mockedAxios.get).not.toHaveBeenCalled();
   });
 
   it('should return an empty state if the API call fails', async () => {
-    // Arrange
     mockedAxios.get.mockRejectedValue(new Error('API Error'));
 
-    // Act
     const result = await searchRecipes('error-query', 1);
 
-    // Assert
     expect(result.results).toEqual([]);
     expect(result.totalResults).toBe(0);
   });
