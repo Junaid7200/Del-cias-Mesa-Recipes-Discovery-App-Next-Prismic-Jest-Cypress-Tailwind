@@ -6,7 +6,7 @@ import { PrismicRichText } from "@prismicio/react";
 import Link from "next/link";
 import { Metadata } from "next";
 
-const RECIPES_PER_PAGE = 6;
+const RECIPES_PER_PAGE = 3;
 
 type SearchPageProps = {
   searchParams: { q?: string; page?: string };
