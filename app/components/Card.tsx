@@ -67,12 +67,12 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
         "flex-1 bg-[#F5F2F2] px-12 py-5",
         isHorizontal && "rounded-r-2xl flex flex-col gap-3 justify-center"
       )}>
-        <h3 className={clsx("mb-4 text-xl font-bold text-gray-900 line-clamp-1")}>{title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">{subtitle}</p>
+        <h3 className={clsx("mb-4 text-[32px] font-bold text-[#2C2B2B] line-clamp-1")}>{title}</h3>
+        <p className="mt-2 text-[21px] font-normal leading-relaxed text-[#2C2B2B] line-clamp-3">{subtitle}</p>
         
         <div className='mt-4'>
         <Link href={`/recipe/${id}`}>
-          <button className="cursor-pointer rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
+          <button className="cursor-pointer rounded-full bg-[#FFDB63] text-[#2C2B2B] px-4 py-2 text-sm font-semibold">
             {buttonText || "View Recipe"}
           </button>
         </Link>
