@@ -1,12 +1,11 @@
-import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getAboutData } from "@/app/lib/GetAboutData";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
-  const page = await client.getSingle("about_us").catch(() => null);
+  const page = await getAboutData();
 
   return {
     title: page?.data.meta_title || "About Us",
@@ -15,8 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AboutPage() {
-  const client = createClient();
-  const page = await client.getSingle("about_us").catch(() => null);
+  const page = await getAboutData();
 
   if (!page) {
     notFound();

@@ -70,13 +70,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       {/* Search results section */}
       <section className="mt-16 md:mt-32 w-full">
         {cards.length > 0 ? (
-          <>
+          <div className="mx-auto 2xl:max-w-[1400px]">
             {userQuery && (
-              <h2 className="mb-6 text-[40px] font-bold md:px-16">
+              <h2 className="mb-6 text-[40px] font-bold">
                 {`${searchData.data.results_heading} "${userQuery}"`}
               </h2>
             )}
-            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 md:px-16">
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
               {cards.map((c: any) => (
                 <Card
                   key={c.id}
@@ -106,7 +106,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 </Link>
               )}
             </div>
-          </>
+          </div>
         ) : (
           <>
             {userQuery ? (

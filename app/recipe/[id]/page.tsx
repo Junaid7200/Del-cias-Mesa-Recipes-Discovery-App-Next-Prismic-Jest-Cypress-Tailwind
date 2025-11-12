@@ -65,7 +65,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
     <RecipeHeroImage src={recipe.image} alt={recipe.title} />
 
       {/* Content */}
-      <div className="md:pl-12 mx-auto px-6 py-10 space-y-8 max-w-[1440px] 2xl:max-w-[1600px]">
+      <div className="px-12 lg:px-0 mx-auto py-10 space-y-8 md:w-[80%] 2xl:max-w-[1400px]">
         {/* Ingredients */}
         <section>
           <h2 className="text-2xl font-bold mb-4">{recipeData.data.ingredients}</h2>
@@ -112,7 +112,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
           </section>
         )}
         {similarRecipes.length > 0 && (
-        <div className="mt-10">
+        <div className="mt-10 flex flex-col justify-center items-center lg:items-start">
           <h2 className="text-2xl font-bold mb-4">{recipeData.data.similar_recipes}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {similarRecipes.map((recipe) => (

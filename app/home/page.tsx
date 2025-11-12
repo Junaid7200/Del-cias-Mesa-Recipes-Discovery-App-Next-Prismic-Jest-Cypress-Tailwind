@@ -21,7 +21,7 @@ export default async function Home() {
                     {homeData.data.section_one_text}
                 </h1>
             <div className="mt-10">
-                <div className="grid gap-10 grid-cols-1 px-5 md:px-0 md:grid-cols-3 md:gap-10 min-h-full">
+                <div className="grid gap-10 grid-cols-1 px-5 md:px-0 md:grid-cols-3 min-h-full">
                     {cards.map((c, i) => (
                 <Card key={i} {...c} buttonText={homeData.data.card_button_text} layout="vertical" />
                 ))}
@@ -31,11 +31,11 @@ export default async function Home() {
         </div>
         {/* recent recipes section */}
         <div>
-        <div className="flex flex-col justify-center items-center mx-auto md:max-w-[1350px] 2xl:max-w-[1550px]">
-        <h1 className="text-[40px] font-bold mb-10">
+        <div className="flex flex-col mx-auto md:w-[80%] xl:max-w-[1300px] 2xl:max-w-[1400px]">
+        <h1 className="text-[40px] font-bold mb-10 mx-auto">
             {homeData.data.section_two_text}
         </h1>
-        <div className="flex flex-col items-center px-5 gap-10 md:px-0 md:gap-[65px] min-h-full">
+        <div className="flex flex-col px-5 gap-10 md:px-0 md:gap-[65px]">
             {recentCards.map((c, i) => (
                 <Card key={i} {...c} buttonText={homeData.data.card_button_text} layout="horizontal" />
             ))}
