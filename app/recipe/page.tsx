@@ -53,7 +53,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const hasPrevPage = page > 1;
 
   return (
-    <div className="flex flex-col items-center px-6 py-10 max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
+    <div className="flex flex-col items-center px-6 py-10">
       {/* Search recipe section */}
       <section className="w-full max-w-3xl">
         {/* prismicrichtext below: */}
@@ -68,9 +68,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       </section>
 
       {/* Search results section */}
-      <section className="mt-16 md:mt-32 w-full">
+      <section className="mt-16 md:mt-32">
         {cards.length > 0 ? (
-          <div className="mx-auto 2xl:max-w-[1400px]">
+          <div className="px-5 md:w-full 2xl:max-w-[1600px]">
             {userQuery && (
               <h2 className="mb-6 text-[40px] font-bold">
                 {`${searchData.data.results_heading} "${userQuery}"`}

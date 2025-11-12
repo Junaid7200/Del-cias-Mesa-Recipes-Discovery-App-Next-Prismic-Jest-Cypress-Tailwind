@@ -16,7 +16,7 @@ export default async function Home() {
             <Hero page = {homeData} />
             {/* popular recipes section */}
         <div className="mt-20 mb-[120px]">
-        <div className="flex flex-col justify-center items-center md:w-[90%] lg:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
+        <div className="flex flex-col justify-center items-center md:w-full lg:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
                 <h1 className="text-[40px] font-bold">
                     {homeData.data.section_one_text}
                 </h1>
@@ -31,11 +31,11 @@ export default async function Home() {
         </div>
         {/* recent recipes section */}
         <div>
-        <div className="flex flex-col mx-auto md:w-[80%] xl:max-w-[1300px] 2xl:max-w-[1400px]">
-        <h1 className="text-[40px] font-bold mb-10 mx-auto">
+        <div className="flex flex-col justify-center items-center">
+        <h1 className="text-[40px] font-bold mb-10">
             {homeData.data.section_two_text}
         </h1>
-        <div className="flex flex-col px-5 gap-10 md:px-0 md:gap-[65px]">
+        <div className="flex flex-col  gap-10 md:gap-[65px] px-5 md:w-[90%] xl:max-w-[1300px] 2xl:max-w-[1600px]">
             {recentCards.map((c, i) => (
                 <Card key={i} {...c} buttonText={homeData.data.card_button_text} layout="horizontal" />
             ))}
