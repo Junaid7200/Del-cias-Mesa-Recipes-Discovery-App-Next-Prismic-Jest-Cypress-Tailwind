@@ -6,7 +6,7 @@ import stripHtml from "@/app/lib/utils";
 import RecipeHeroImage  from "@/app/components/RecipeHeroImage";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-
+import { getHomeData } from "@/app/lib/GetHomeData";
 
 type RecipePageProps = {
   params: { id: string };
@@ -49,9 +49,8 @@ export default async function RecipePage({ params }: RecipePageProps) {
   const recipe = await getRecipeById(Number(id));
   const client = createClient();
   const recipeData = await client.getSingle("recipe_details");
-  const homeData = await client.getSingle("home");
+  const homeData = await getHomeData();
   const similarRecipes = await getSimilarRecipes(id);
-  console.log("Similar Recipes:", similarRecipes);
 
   if (!recipe) {
     notFound();

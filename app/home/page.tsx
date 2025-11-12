@@ -1,15 +1,15 @@
 import Hero from "@/app/components/Hero";
 import { getRandomRecipeCards } from "@/app/lib/GetRecipes"
-import { createClient } from "@/prismicio";
 import Card from "@/app/components/Card";
+import { getHomeData } from "../lib/GetHomeData";
 
 
 export default async function Home() {
     const allCards = await getRandomRecipeCards({ number: 6, tags: [] });
     const cards = allCards.slice(0, 3);
     const recentCards = allCards.slice(3, 6);
-    const client = createClient();
-    const homeData = await client.getSingle("home");
+
+    const homeData = await getHomeData();
 
     return (
         <div className="mb-[8vh]">

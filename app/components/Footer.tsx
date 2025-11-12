@@ -13,7 +13,7 @@ export default function Footer({ page }: {page: HomeDocument}) {
 
     return (
         <footer className="bg-[#FFDB63] py-16 lg:py-20">
-            <div className='flex flex-col lg:flex-row items-center gap-6 lg:gap-[270px] w-full lg:w-[90%] max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-20 lg:px-30'>
+            <div className='flex flex-col lg:flex-row items-center gap-6 lg:gap-[400px] w-full lg:w-[90%] max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-20 lg:px-30'>
                 <div className="flex items-center gap-4">
                     <PrismicNextImage field={page.data.website_logo} />
                     <span className="text-2xl font-bold hidden lg:block">{page.data.website_name}</span>

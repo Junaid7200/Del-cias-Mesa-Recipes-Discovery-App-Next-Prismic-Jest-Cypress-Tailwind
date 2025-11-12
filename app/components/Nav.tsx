@@ -23,7 +23,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
         {/* Left: logo + website name: the website name needs to be hidden for mobile view but block (visible) for md or bigger. other then that, this just needs to be horizontal so flex will do */}
         
         <Link href="/" className="flex items-center gap-4 lg:justify-self-start" aria-label="Homepage">
-          <PrismicNextImage field={page.data.website_logo} width={28} height={26} />
+          <PrismicNextImage field={page.data.website_logo} width={28} height={28} />
           {/* Hide text on mobile, show on medium+ */}
           <span className="text-2xl hidden lg:block">{page.data.website_name}</span>
         </Link>
@@ -46,13 +46,13 @@ export default function Nav({ page }: { page: HomeDocument }) {
         </div>
 
         {/* Hamburger Button: completly hidden in md or higher views and will use the state we made above to true when we click it (open the mobile menu basically) */}
-        <div className="lg:hidden">
+        <div className="lg:hidden flex items-center">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
             // aria-labels are just to follow the WCAG
             aria-label="Open navigation menu"
           >
-            <IoMenu size={32} aria-hidden="true"/>
+            <IoMenu size={28} aria-hidden="true"/>
           </button>
         </div>
       </div>

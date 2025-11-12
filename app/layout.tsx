@@ -3,13 +3,13 @@ import { Inter } from "next/font/google";
 import "@/app/styles/globals.css";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
-import { createClient } from "@/prismicio";
+import { getHomeData } from "./lib/GetHomeData";
 
 const inter = Inter({ subsets: ["latin"] })
 
 // This fetches data once for the whole layout
-const client = createClient();
-const homeData = await client.getSingle("home");
+
+const homeData = await getHomeData();
 
 
 // --- THIS SECTION IS UPDATED ---

@@ -5,6 +5,7 @@ import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { getHomeData } from "../lib/GetHomeData";
 
 const RECIPES_PER_PAGE = 3;
 
@@ -43,7 +44,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const [searchResponse, searchData, homeData] = await Promise.all([
     searchRecipes(effectiveQuery, page),
     createClient().getSingle("search_recipes"),
-    createClient().getSingle("home"),
+    getHomeData(),
   ]);
 
   const { results: cards, totalResults } = searchResponse;
