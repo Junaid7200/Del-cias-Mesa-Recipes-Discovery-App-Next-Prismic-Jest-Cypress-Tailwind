@@ -16,12 +16,12 @@ export default async function Home() {
             <Hero page = {homeData} />
             {/* popular recipes section */}
         <div className="mt-20 mb-[120px]">
-        <div className="flex flex-col justify-center items-center md:w-full lg:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
+        <div className="flex flex-col justify-center items-center">
                 <h1 className="text-[40px] font-bold">
                     {homeData.data.section_one_text}
                 </h1>
             <div className="mt-10">
-                <div className="grid gap-10 grid-cols-1 px-5 md:px-0 md:grid-cols-3 min-h-full">
+                <div className="grid gap-10 grid-cols-1 px-5 2xl:px-0 md:grid-cols-3 min-h-full md:w-full lg:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
                     {cards.map((c, i) => (
                 <Card key={i} {...c} buttonText={homeData.data.card_button_text} layout="vertical" />
                 ))}
