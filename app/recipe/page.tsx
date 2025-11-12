@@ -53,9 +53,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const hasPrevPage = page > 1;
 
   return (
-    <div className="flex flex-col items-center px-6 py-10 mb-20">
+    <div className="flex flex-col items-center py-10 mb-20">
       {/* Search recipe section */}
-      <section className="w-full max-w-3xl">
+      <section className="w-[90%] sm:w-[85%] md:w-full max-w-3xl">
         {/* prismicrichtext below: */}
         <div className="mb-12 flex items-center justify-center gap-3 text-[40px] font-bold text-[#2C2B2B]">
           <PrismicRichText field={searchData.data.main_heading} />
