@@ -70,11 +70,13 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
         <h3 className={clsx("mb-4 text-xl font-bold text-gray-900 line-clamp-1")}>{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">{subtitle}</p>
         
-        <Link href={`/recipe/${id}`} className="mt-4 block">
+        <div className='mt-4'>
+        <Link href={`/recipe/${id}`}>
           <button className="cursor-pointer rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
             {buttonText || "View Recipe"}
           </button>
         </Link>
+        </div>
       </div>
     </article>
   );
