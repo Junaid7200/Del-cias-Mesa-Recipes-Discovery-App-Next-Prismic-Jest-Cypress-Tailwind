@@ -17,7 +17,7 @@ export default async function Home() {
             {/* popular recipes section */}
         <div className="mt-20 mb-[120px]">
         <div className="flex flex-col justify-center items-center md:w-[90%] lg:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
-                <h1 className="text-[40px] font-bold">
+                <h1 className="text-[40px] font-bold text-[#2C2B2B]">
                     {homeData.data.section_one_text}
                 </h1>
             <div className="mt-10">
@@ -32,7 +32,7 @@ export default async function Home() {
         {/* recent recipes section */}
         <div>
         <div className="flex flex-col justify-center items-center">
-        <h1 className="text-[40px] font-bold mb-10">
+        <h1 className="text-[40px] font-bold mb-10 text-[#2C2B2B]">
             {homeData.data.section_two_text}
         </h1>
         <div className="flex flex-col  gap-10 md:gap-[65px] px-5 md:w-[90%] xl:max-w-[1300px] 2xl:max-w-[1600px]">

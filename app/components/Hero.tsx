@@ -28,7 +28,7 @@ export default function Hero({page}: {page: HomeDocument}) {
 
       {/* Centered content: simple absolute div so text is on top of the image and grid place-items-center to center it */}
       <div className="absolute inset-0 z-10 grid place-items-center px-6">
-        <h1 className="md:w-[900px] text-[40px] mx-auto text-center text-white font-extrabold leading-tight">
+        <h1 className="md:w-[900px] text-[40px] mx-auto text-center text-white font-bold leading-tight">
           {heroData.hero_text}
         </h1>
       </div>

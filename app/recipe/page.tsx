@@ -57,7 +57,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       {/* Search recipe section */}
       <section className="w-full max-w-3xl">
         {/* prismicrichtext below: */}
-        <div className="mb-12 flex items-center justify-center gap-3 text-3xl font-bold text-[#2C2B2B]">
+        <div className="mb-12 flex items-center justify-center gap-3 text-[40px] font-bold text-[#2C2B2B]">
           <PrismicRichText field={searchData.data.main_heading} />
         </div>
         <Search 
@@ -72,7 +72,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         {cards.length > 0 ? (
           <div className="px-5 md:w-full 2xl:max-w-[1600px]">
             {userQuery && (
-              <h2 className="mb-6 text-[40px] font-bold">
+              <h2 className="mb-6 text-[40px] font-bold text-[#2C2B2B]">
                 {`${searchData.data.results_heading} "${userQuery}"`}
               </h2>
             )}

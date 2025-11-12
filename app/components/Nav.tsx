@@ -25,13 +25,13 @@ export default function Nav({ page }: { page: HomeDocument }) {
         <Link href="/" className="flex items-center gap-4 lg:justify-self-start" aria-label="Homepage">
           <PrismicNextImage field={page.data.website_logo} width={28} height={28} />
           {/* Hide text on mobile, show on medium+ */}
-          <span className="text-2xl hidden lg:block">{page.data.website_name}</span>
+          <span className="text-[26px] font-medium hidden lg:block text-[#2C2B2B]">{page.data.website_name}</span>
         </Link>
 
         {/* Center: menu: the whole thing needs to be hidden in mobile view, in md or higher view its a very simple flex with some gap */}
         <div className="justify-self-center hidden lg:flex items-center gap-10">
           {page.data.navbar_link.map((item) => (
-            <PrismicLink key={item.navbar_link_text} field={item.page_link} className="text-lg font-semibold hover:text-[#FFDB63] transition-colors">
+            <PrismicLink key={item.navbar_link_text} field={item.page_link} className="text-[#2C2B2B] text-[26px] font-bold hover:text-[#FFDB63] transition-colors">
               {item.navbar_link_text}
             </PrismicLink>
           ))}

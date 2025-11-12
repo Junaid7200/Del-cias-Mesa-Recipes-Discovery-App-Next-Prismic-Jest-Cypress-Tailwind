@@ -15,12 +15,12 @@ export default function Footer({ page }: {page: HomeDocument}) {
         <footer className="bg-[#FFDB63] py-16 lg:py-20">
             <div className='flex flex-col lg:flex-row items-center gap-6 lg:gap-[400px] w-full lg:w-[90%] max-w-[1440px] 2xl:max-w-[1600px] mx-auto'>
                 <div className="flex items-center gap-4">
-                    <PrismicNextImage field={page.data.website_logo} />
-                    <span className="text-2xl font-bold hidden lg:block">{page.data.website_name}</span>
+                    <PrismicNextImage field={page.data.website_logo} width={49} height={49} />
+                    <span className="text-[46px] text-[#2C2B2B] font-semibold hidden lg:block">{page.data.website_name}</span>
                 </div>
                 
                 <div className="flex flex-col items-center gap-2">
-                    <h3 className='font-bold text-xl'>{page.data.footer_text}</h3>
+                    <h3 className='font-semibold text-[26px] text-[#000000] '>{page.data.footer_text}</h3>
                     <div className="flex gap-4">
                         {icons.map((icon, index) => (
                             icon.url && <PrismicNextImage key={index} field={icon} />

@@ -68,7 +68,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
       <div className="px-12 mx-auto py-10 space-y-8 md:w-full 2xl:max-w-[1600px]">
         {/* Ingredients */}
         <section>
-          <h2 className="text-2xl font-bold mb-4">{recipeData.data.ingredients}</h2>
+          <h2 className="text-[24px] text-[#2C2B2B] font-bold mb-4">{recipeData.data.ingredients}</h2>
           <ul className="space-y-2">
             {recipe.extendedIngredients.map((ing, i) => (
               <li key={i} className="flex items-start">
@@ -81,7 +81,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
 
         {/* Instructions */}
         <section>
-          <h2 className="text-2xl font-bold mb-4">{recipeData.data.instructions}</h2>
+          <h2 className="text-[24px] text-[#2C2B2B] font-bold mb-4">{recipeData.data.instructions}</h2>
           {recipe.analyzedInstructions.length > 0 ? (
             <ol className="space-y-3">
               {recipe.analyzedInstructions[0].steps.map((step) => (
@@ -102,7 +102,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
         {/* Additional info */}
         {recipe.summary && (
           <section>
-            <h2 className="text-2xl font-bold mb-4">{recipeData.data.summary}</h2>
+            <h2 className="text-[24px] text-[#2C2B2B] font-bold mb-4">{recipeData.data.summary}</h2>
             <p className="leading-relaxed">{stripHtml(recipe.summary)}</p>
             {recipe.readyInMinutes && (
               <p className="mt-2 text-sm text-gray-600">
@@ -113,7 +113,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
         )}
         {similarRecipes.length > 0 && (
         <div className="mt-10 flex flex-col justify-center items-center lg:items-start">
-          <h2 className="text-2xl font-bold mb-4">{recipeData.data.similar_recipes}</h2>
+          <h2 className="text-[24px] text-[#2C2B2B] font-bold mb-4">{recipeData.data.similar_recipes}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {similarRecipes.map((recipe) => (
               <Card key={recipe.id} {...recipe} layout="vertical" buttonText={homeData.data.card_button_text || "View Recipe"} />
