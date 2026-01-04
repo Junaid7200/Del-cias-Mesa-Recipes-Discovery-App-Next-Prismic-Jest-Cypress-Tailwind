@@ -26,7 +26,7 @@ export async function getRandomRecipeCards(
         "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
         "x-rapidapi-host": HOST,
       },
-      next: { revalidate: 10800 }, // Revalidate once per 3 hours
+      next: { revalidate: 172800 }, // Revalidate once per 3 hours
     });
 
     const data = await response.json();

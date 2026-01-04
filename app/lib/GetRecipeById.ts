@@ -12,7 +12,7 @@ export async function getRecipeById(id: number): Promise<RecipeDetail | null> {
           "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
           "x-rapidapi-host": HOST,
         },
-        next: { revalidate: 3600 }, // Cache results for one hour
+        next: { revalidate: 172800 }, // Cache results for one hour
       }
     );
     

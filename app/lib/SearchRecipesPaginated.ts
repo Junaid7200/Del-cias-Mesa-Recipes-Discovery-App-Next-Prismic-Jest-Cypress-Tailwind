@@ -1,7 +1,4 @@
-import axios from "axios";
 import stripHtml, {BASE, HOST} from "@/app/lib/utils";
-
-
 
 const RECIPES_PER_PAGE = 6;
 
@@ -13,24 +10,26 @@ export async function searchRecipes(query: string, page: number = 1) {
   const offset = (page - 1) * RECIPES_PER_PAGE;
 
   try {
-    const response = await axios.get(
-      `${BASE}/recipes/complexSearch`,
+    const response = await fetch(
+      `${BASE}/recipes/complexSearch?${new URLSearchParams({
+        query,
+        number: String(RECIPES_PER_PAGE),
+        offset: String(offset),
+        addRecipeInformation: 'true',
+        fillIngredients: 'true',
+      })}`,
       {
-        params: {
-          query,
-          number: RECIPES_PER_PAGE,
-          offset,
-          addRecipeInformation: true,
-          fillIngredients: true,
-        },
         headers: {
           "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
           "x-rapidapi-host": HOST,
         },
+        next: { revalidate: 3600 } // Cache for 1 hour
       }
     );
 
-    const cards = response.data.results.map((recipe: any) => ({
+    const data = await response.json();
+
+    const cards = data.results.map((recipe: any) => ({
       id: recipe.id,
       image: recipe.image,
       title: recipe.title,
@@ -39,9 +38,9 @@ export async function searchRecipes(query: string, page: number = 1) {
 
     return {
       results: cards,
-      totalResults: response.data.totalResults,
+      totalResults: data.totalResults,
     };
   } catch (error) {
     return { results: [], totalResults: 0 };
   }
-} 
+}
